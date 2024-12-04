@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Player1 point: <b>0</b></h1>
+    <h1>Player2 point: <b>0</b></h1>
+    <p id="shagai">Mori</p>
+    <button onclick="shagaiOrhih()">Shagai orhih</button>
+    <br><br>
+    <div>
+        <img src="horse.png" alt="horse" width="50px" height="50px">
+    </div>
+    <hr>
+    <div>
+        <img src="horse.png" alt="horse" width="50px" height="50px">
+    </div>
+    <script>
+        let henbe = true
+        let player1Point = 0
+        let player2Point = 0
+        let player1 = document.getElementsByTagName('b')[0]
+        let player2 = document.getElementsByTagName('b')[1]
+        let player1Mori = document.getElementsByTagName('img')[0]
+        let player2Mori = document.getElementsByTagName('img')[1]
+        function shagaiOrhih(){
+            var shagai = document.getElementById("shagai");
+            let randomToo = Math.ceil(Math.random()*4)
+            switch(randomToo){
+                case 1:
+                    shagai.innerText = "Mori";
+                    if(henbe){
+                        henbe = false
+                        player1Point++
+                        player1.innerText = player1Point
+                        player1Mori.style.marginLeft = player1Point * 50 + 'px'
+                        if(player1Point > 5){
+                            alert("player1 win!")
+                            player1Point = 0
+                            player1.innerText = 0
+                            player1Mori.style.marginLeft = "0px"
+                            player2Point = 0
+                            player2.innerText = 0
+                            player2Mori.style.marginLeft = "0px"
+                        }
+                    }else {
+                        henbe = true
+                        player2Point++
+                        player2.innerText = player2Point
+                        player2Mori.style.marginLeft = player2Point * 50 + 'px'
+                        if(player2Point > 5){
+                            alert("player2 win!")
+                            player1Point = 0
+                            player1.innerText = 0
+                            player1Mori.style.marginLeft = "0px"
+                            player2Point = 0
+                            player2.innerText = 0
+                            player2Mori.style.marginLeft = "0px"
+                        }
+                    }
+                    break;
+                case 2:
+                    shagai.innerText = "Honi";
+                    break;
+                case 3:
+                    shagai.innerText = "Ymaa";
+                    break;
+                case 4:
+                    shagai.innerText = "Temee";
+                    break;
+                default: break;
+            }
+        }
+    </script>
+</body>
+</html>
